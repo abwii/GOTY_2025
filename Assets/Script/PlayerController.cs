@@ -10,12 +10,12 @@ public class PlayerController : MonoBehaviour
     public int angularSpeed = 200;
     public int acceleration = 100;
     public int dashSpeed = 30;
-    public bool dashCoolDown = false;
-    public int maxDashLength = 50;
-    public bool canDash = true;
-    public bool canMove = true;
-    public bool inDash = false;
-    public bool inMove = false;
+    private bool dashCoolDown = false;
+    public int maxDashLength = 10;
+    private bool canDash = true;
+    private bool canMove = true;
+    private bool inDash = false;
+    private bool inMove = false;
     public float duration = 0.25f;
     private Rigidbody body;
     private NavMeshAgent agent;
