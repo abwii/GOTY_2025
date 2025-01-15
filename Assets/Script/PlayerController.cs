@@ -10,10 +10,7 @@ public class PlayerController : MonoBehaviour
     public int angularSpeed = 200;
     public int acceleration = 100;
     public int dashSpeed = 30;
-    private bool dashCoolDown = false;
     public int maxDashLength = 10;
-    private bool canDash = true;
-    private bool canMove = true;
     private bool inDash = false;
     private bool inMove = false;
     public float duration = 0.25f;
@@ -52,21 +49,12 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(direction);
 
             this.dashDesiredPos = new Vector3(direction.x - this.transform.position.x, direction.y, direction.z - this.transform.position.z);
-            // StartCoroutine(Dash());
             
             this.agent.ResetPath();
             StartTimedFunction();
-            // this.canDash = false;
-            // this.canMove = false;
-            // this.inDash = true;
-
-
         }
         if (this.inDash)
         {
-            // SetAgentDash();
-            // this.agent.SetDestination(this.dashDesiredPos);
-            // this.body.linearVelocity = this.dashDesiredPos * this.dashSpeed;
             if (InMaxLength())
             {
                 this.body.linearVelocity = this.dashDesiredPos * this.dashSpeed;
@@ -94,74 +82,11 @@ public class PlayerController : MonoBehaviour
             this.inMove = false;
         }
         // else{
-        //     SetAgentStd();
-        //     print("move to " + this.desiredPos);
-        // //     this.agent.SetDestination(this.desiredPos);
-        // }
-        // if (this.canMove && !this.agent.pathPending)
-        // {
-        //     SetAgentStd();
-        //     print("move to " + this.desiredPos);
-        //     this.agent.SetDestination(this.desiredPos);
-        // }
-        // else if (!this.canDash && !this.canMove && this.dashDesiredPos != null)
-        // {
-        //     SetAgentDash();
-        //     this.agent.SetDestination(this.dashDesiredPos);
-        // }
-
-        // if (this.inDash)
-        // {
-        //     print("dash en cours");
-        //     SetAgentDash();
-        //     this.agent.SetDestination(this.dashDesiredPos);
-        // }
-        // if (this.inDash && !this.agent.pathPending)
-        // {
-        //     this.inDash = false;
-        //     this.canDash = true;
-        //     this.canMove = true;
-        // }
-        // if (this.canMove && this.inMove && !this.inDash)
-        // {
-        //     SetAgentStd();
-        //     this.agent.SetDestination(this.desiredPos);
-        // }
-        // if (!this.agent.pathPending && !this.canDash)
-        // {
-        //     this.canDash = true;
-        //     this.canMove = true;
-        // }
-        // if(this.canMove && this.desiredPos != null){
-        //     SetAgentStd();
-        //     this.agent.SetDestination(this.desiredPos);
-        // }
-        print(this.inDash);
     }
 
     void FixedUpdate()
     {
-        // if(this.frames)
-        // yield return new WaitForSeconds(this.timeDelay);
-        // SpawnEnemy();
-        // SpawnRoutine();
 
-        // Vector3 desirebleVelo = Vector3.zero;
-        // if (Input.GetMouseButtonDown(1))
-        // {
-        //     Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y);
-
-        //     desiredPos = cam.ScreenToWorldPoint(mousePos);
-        //     desiredPos.y = 0;
-        //     // this.transform.position = desiredPos;
-        //     agent.SetDestination(desiredPos);
-        // }
-
-        // emptyTarget.transform.position = targetPosition;
-
-        // transform.LookAt(emptyTarget);
-
-        // transform.Translate(transform.forward * movementSpeed * Time.deltaTime);
     }
 
     void SetAgentStd()
