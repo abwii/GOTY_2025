@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 desiredPos;
     private Vector3 dashDesiredPos;
     private Vector3 posBuffer;
+    public Transform shootingPoint;
+    public GameObject fireBall;
+    public Animator animator;
 
     void Start()
     {
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
         this.body = GetComponent<Rigidbody>();
         this.agent = GetComponent<NavMeshAgent>();
         SetAgentStd();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -47,7 +52,7 @@ public class PlayerController : MonoBehaviour
             this.posBuffer = this.transform.position;
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y);
             Vector3 direction = cam.ScreenToWorldPoint(mousePos);
-            direction.y = this.transform.localScale.y;
+            direction.y = this.transform.position.y;
             transform.LookAt(direction);
 
             this.dashDesiredPos = new Vector3(direction.x - this.transform.position.x, direction.y, direction.z - this.transform.position.z);
@@ -81,6 +86,37 @@ public class PlayerController : MonoBehaviour
             this.inMove = false;
         }
         // else{
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            this.posBuffer = this.transform.position;
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y);
+            Vector3 direction = cam.ScreenToWorldPoint(mousePos);
+            direction.y = this.transform.position.y;
+            transform.LookAt(direction);
+
+            TriggerAnimation("Attack_fire");
+
+            Instantiate(fireBall, shootingPoint.transform.position, this.transform.rotation);
+        }
+    }
+
+    void TriggerAnimation(string triggerName)
+    {
+        if (animator != null)
+        {
+            animator.ResetTrigger(triggerName);
+            animator.SetTrigger(triggerName);
+        }
+        else
+        {
+            Debug.LogWarning("Animator not found on the GameObject.");
+        }
+    }
+
+    void UpdateAnimator()
+    {
+        
     }
 
     void FixedUpdate()

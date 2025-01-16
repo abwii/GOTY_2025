@@ -17,11 +17,4 @@ public class FireBallMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    private void OnDestroy()
-    {
-        Debug.Log("Boom");
-        // Instanciate explision
-        Instantiate(explosion, explosionPoint.position, explosionPoint.rotation);
-    }
 }
