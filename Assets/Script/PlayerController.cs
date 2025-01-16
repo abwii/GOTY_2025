@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private bool inDash = false;
     private bool inMove = false;
     public float duration = 0.25f;
+    public float dashCoolDownDuration = 1f;
+    public bool dashInCoolDown = false;
     private Rigidbody body;
     private NavMeshAgent agent;
     private Camera cam;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
             this.inMove = true;
             // this.transform.position = desiredPos;
         }
-        if (Input.GetKeyDown(KeyCode.E) && !this.inDash)
+        if (Input.GetKeyDown(KeyCode.E) && !this.inDash && !this.dashInCoolDown)
         {
             this.posBuffer = this.transform.position;
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y);
@@ -113,9 +115,24 @@ public class PlayerController : MonoBehaviour
         this.inDash = false;
     }
 
+    public IEnumerator DashCoolDown(float duration){
+        this.dashInCoolDown = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            print(elapsedTime);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+        this.dashInCoolDown = false;
+    }
+
     public void StartTimedFunction()
     {
         StartCoroutine(Dash(this.duration));
+        StartCoroutine(DashCoolDown(this.dashCoolDownDuration));
     }
 
     public bool InMaxLength()
