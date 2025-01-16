@@ -50,6 +50,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4811628722680223079, guid: 2e684e3abc9d78844a2847f6bb7b3cfc, type: 3}
       propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811628722680223079, guid: 2e684e3abc9d78844a2847f6bb7b3cfc, type: 3}
+      propertyPath: dashSpeed
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5647394626212278971, guid: 2e684e3abc9d78844a2847f6bb7b3cfc, type: 3}

@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(direction);
 
             this.dashDesiredPos = new Vector3(direction.x - this.transform.position.x, direction.y, direction.z - this.transform.position.z);
-            
             this.agent.ResetPath();
             StartTimedFunction();
         }
@@ -61,24 +60,22 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                this.body.linearVelocity = new Vector3(0, 0, 0);
+                this.body.linearVelocity = Vector3.zero;
             }
             print("velocity" + this.body.linearVelocity);
         }
         else
         {
-            this.body.linearVelocity = new Vector3(0, 0, 0);
+            this.body.linearVelocity = Vector3.zero;
         }
 
         if (!this.inDash && this.inMove)
         {
-            this.agent.isStopped = false;
             this.agent.SetDestination(this.desiredPos);
         }
-        if (this.inMove && this.desiredPos == this.transform.position)
+        if (this.inMove && this.agent.remainingDistance <= 0)
         {
-            this.agent.isStopped = true;
-            this.agent.ResetPath();
+            
             this.inMove = false;
         }
         // else{
