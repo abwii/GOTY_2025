@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public int hp = 3;
+    public int maxHp = 3;
     public int speed = 10;
     public int angularSpeed = 200;
     public int acceleration = 100;
@@ -27,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public Transform shootingPoint;
     public GameObject fireBall;
     public Animator animator;
+    public Image healthBar;
+    public TextMeshProUGUI hBText;
 
     void Start()
     {
@@ -40,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        healthBar.fillAmount = (float)hp/(float)maxHp;
+        hBText.text = hp + "/" + maxHp;
         if (Input.GetMouseButtonDown(1))
         {
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y);
