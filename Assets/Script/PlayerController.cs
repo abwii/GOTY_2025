@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
             {
                 this.body.linearVelocity = Vector3.zero;
             }
-            print("velocity" + this.body.linearVelocity);
         }
         else
         {
@@ -136,8 +135,6 @@ public class PlayerController : MonoBehaviour
 
         speed = Mathf.Abs(speed);
 
-        print (speed);
-
         animator.SetFloat("Speed", speed);
     }
 
@@ -165,7 +162,6 @@ public class PlayerController : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            print(elapsedTime);
             elapsedTime += Time.deltaTime;
 
             yield return null;
@@ -179,7 +175,6 @@ public class PlayerController : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            print(elapsedTime);
             elapsedTime += Time.deltaTime;
 
             yield return null;
@@ -207,7 +202,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             hp -= 1;
-            print("HP : " + hp);
         }
 
         if (hp <= 0)

@@ -16,7 +16,6 @@ public class FireColider : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.tag);
 
         Destroy(this.gameObject.transform.parent.gameObject);
 
