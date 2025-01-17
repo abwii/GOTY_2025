@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyCoordinator : MonoBehaviour
 {
-    public float timeDelay = 2;
+    public float timeDelay = 4;
+    public float timeDelayMin = 0.5f;
     public GameObject enemyPreFab;
     public GameObject[] spawnPoints = new GameObject[3];
 
@@ -43,6 +44,7 @@ public class EnemyCoordinator : MonoBehaviour
         while(true){
             SpawnEnemy();
             yield return new WaitForSeconds(this.timeDelay);
+            if (this.timeDelay > this.timeDelayMin) this.timeDelay -= 0.1f;
         }
         // yield return new WaitForSeconds(this.timeDelay);
         // SpawnEnemy();
