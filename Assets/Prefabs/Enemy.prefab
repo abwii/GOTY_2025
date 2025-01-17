@@ -1030,6 +1030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c833b7877e3b6642924d66986183ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
   explosion: {fileID: 159918, guid: ca4a1a0b3e7308e4d8f4bf90a281b739, type: 3}
   explosionPoint: {fileID: 3753660860668117839}
 --- !u!1 &7974371154228225617
