@@ -3,9 +3,11 @@ using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public int hp = 3;
     public int speed = 10;
     public int angularSpeed = 200;
     public int acceleration = 100;
@@ -99,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
             Instantiate(fireBall, shootingPoint.transform.position, this.transform.rotation);
         }
+
+        UpdateAnimator();
     }
 
     void TriggerAnimation(string triggerName)
@@ -116,7 +120,18 @@ public class PlayerController : MonoBehaviour
 
     void UpdateAnimator()
     {
+        float speed = GetComponent<Rigidbody>().linearVelocity.x + GetComponent<Rigidbody>().linearVelocity.z;
         
+        if (speed == 0) 
+        {
+            speed = this.GetComponent<NavMeshAgent>().velocity.x + this.GetComponent<NavMeshAgent>().velocity.z; 
+        }
+
+        speed = Mathf.Abs(speed);
+
+        print (speed);
+
+        animator.SetFloat("Speed", speed);
     }
 
     void FixedUpdate()
@@ -178,5 +193,20 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            hp -= 1;
+            print("HP : " + hp);
+        }
+
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("StartMenu");
+        }
     }
 }

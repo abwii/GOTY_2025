@@ -1,18 +1,14 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class FireColider : MonoBehaviour
 {
-
     public GameObject explosion;
     public Transform explosionPoint;
-
     void Start()
     {
         
     }
 
-    
     void Update()
     {
         
@@ -20,11 +16,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.tag);
 
-        if (collision.gameObject.tag == "Player")
+        Destroy(this.gameObject.transform.parent.gameObject);
+
+        if (collision.gameObject.tag == "Enemy")
         {
             Instantiate(explosion, explosionPoint.position, explosionPoint.rotation);
-            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }

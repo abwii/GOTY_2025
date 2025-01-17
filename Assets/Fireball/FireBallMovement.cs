@@ -7,14 +7,13 @@ public class FireBallMovement : MonoBehaviour
     public GameObject explosion;
     public Transform explosionPoint;
 
+
+    private void Start()
+    {
+        Destroy(this.gameObject, 3);
+    }
     void Update()
     {
         this.transform.position += this.transform.forward * speed * Time.deltaTime;
-
-        lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 }
