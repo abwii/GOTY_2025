@@ -9703,8 +9703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38e8ce2cfa0b3e47bc3f4ee1eb8e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  lifeTime: 1
+  speed: 20
+  lifeTime: 3
   explosion: {fileID: 159918, guid: ca4a1a0b3e7308e4d8f4bf90a281b739, type: 3}
   explosionPoint: {fileID: 0}
 --- !u!1 &3624538023788716125

@@ -596,19 +596,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 316.2
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.4
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47.3
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9238798
+      value: -0.38268262
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalRotation.x
@@ -616,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.38268274
+      value: 0.9238799
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalRotation.z
@@ -628,12 +628,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 4249681057300626729, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7789479902278969171, guid: 9c2715701d0bc1649a1fc34039829c25, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 75b8966e9e6cb4440b7f4d29e37139f7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
